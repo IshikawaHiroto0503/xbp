@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../images"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../css"
+		},
+		{
+			"path": "../digi_fab"
+		}
+	]
+}
