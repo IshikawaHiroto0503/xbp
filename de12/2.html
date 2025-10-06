@@ -1,174 +1,39 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="jp">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ひろっとの第１回の課題</title>
-  <style>
-    body {
-      font-family: "Segoe UI", "Hiragino Sans", sans-serif;
-      line-height: 1.7;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem;
-      background: #f8f9fa;
-    }
-    h1, h2, h3 {
-      color: #333;
-      border-left: 5px solid #4A90E2;
-      padding-left: 0.5rem;
-      margin-top: 2rem;
-    }
-    h1 {
-      border-color: #E24A4A;
-    }
-    code {
-      background: #eee;
-      padding: 2px 5px;
-      border-radius: 3px;
-      font-family: monospace;
-    }
-    pre {
-      background: #eee;
-      padding: 1rem;
-      overflow-x: auto;
-      border-radius: 5px;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin: 1rem 0;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 0.5rem;
-      text-align: left;
-    }
-    a {
-      color: #4A90E2;
-    }
-    .diagram {
-      white-space: pre;
-      font-family: monospace;
-      background: #fafafa;
-      border: 1px solid #ccc;
-      padding: 1rem;
-      overflow-x: auto;
-      margin: 1rem 0;
-    }
-  </style>
+    <!-- ⑥↓タイトルを変えてみよう -->
+    <title>ひろっとのテストページ</title>
+    <!-- ⑤スタイルシートの設定をしよう -->
+     <link rel="stylesheet" href="./css/style.css">
+    <!-- h1.htmlからある行をコピペしてくればOK -->
 </head>
 <body>
-
-  <h1>📝 Git と HTML のまとめドキュメント</h1>
-
-  <p>このページは、自分用の教科書として <strong>Git</strong> と <strong>HTML</strong> の基本をわかりやすくまとめたものです。Visual Studio Code にコピペして、ブラウザで開くだけで表示できます。</p>
-
-  <h2>1. Git（バージョン管理ツール）</h2>
-
-  <h3>1-1. Gitって何？</h3>
-  <p>Gitは、ファイルの変更履歴を記録し、いつでも戻したり共有できるツールです。</p>
-  <ul>
-    <li>「昨日の状態に戻したい！」→ Git で簡単に戻せる</li>
-    <li>「チームで同じファイルをいじった」→ Git が差分を教えてくれる</li>
-  </ul>
-
-  <h3>1-2. 基本の流れ（図）</h3>
-  <div class="diagram">
-┌─────────────┐    git add    ┌─────────────┐    git commit    ┌─────────────┐
-│ Working Tree │ ───────────▶ │ Staging Area│ ───────────────▶ │ Local Repo  │
-└─────────────┘              └─────────────┘                   └─────────────┘
-                                                                     │
-                                                                     │ git push
-                                                                     ▼
-                                                              ┌─────────────┐
-                                                              │ Remote Repo │
-                                                              └─────────────┘
-  </div>
-
-  <h3>1-3. よく使うコマンド</h3>
-  <table>
-    <tr><th>目的</th><th>コマンド</th><th>意味</th></tr>
-    <tr><td>リポジトリ作成</td><td><code>git init</code></td><td>Gitを始める</td></tr>
-    <tr><td>状態確認</td><td><code>git status</code></td><td>何が変わったか確認</td></tr>
-    <tr><td>追加</td><td><code>git add ファイル名</code></td><td>ステージに追加</td></tr>
-    <tr><td>保存（履歴）</td><td><code>git commit -m "メッセージ"</code></td><td>履歴を残す</td></tr>
-    <tr><td>共有</td><td><code>git push origin main</code></td><td>サーバにアップ</td></tr>
-    <tr><td>取得</td><td><code>git pull origin main</code></td><td>サーバの更新を取り込む</td></tr>
-    <tr><td>履歴表示</td><td><code>git log --oneline</code></td><td>簡易履歴表示</td></tr>
-  </table>
-
-  <h3>1-4. ブランチとチーム開発</h3>
-  <p>ブランチ＝作業の枝分かれ。main（本番）を壊さずに別の枝で作業して、後で合体できます。</p>
-  <div class="diagram">
-main ──────●──────●────────●───▶（安定）
-               \
-feature/login ──●──●──────────▶（新機能）
-  </div>
-
-  <h3>1-5. トラブル対応とポイント</h3>
-  <table>
-    <tr><th>状況</th><th>コマンド・対応</th></tr>
-    <tr><td>間違えて上書きした</td><td><code>git restore ファイル名</code></td></tr>
-    <tr><td>直前のコミットやり直し</td><td><code>git commit --amend</code></td></tr>
-    <tr><td>コミットを1つ戻す</td><td><code>git reset --soft HEAD^</code></td></tr>
-    <tr><td>競合が出た</td><td>ファイル内を手動修正→<code>git add</code>→<code>git commit</code></td></tr>
-  </table>
-
-  <hr>
-
-  <h2>2. HTML（Webページの骨組み）</h2>
-
-  <h3>2-1. HTMLの役割と基本構造</h3>
-  <p>HTMLはWebページの<strong>中身と構造</strong>を作る言語です。</p>
-
-  <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="ja"&gt;
-  &lt;head&gt;
-    &lt;meta charset="utf-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
-    &lt;title&gt;ページタイトル&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;header&gt;ヘッダー&lt;/header&gt;
-    &lt;main&gt;
-      &lt;h1&gt;見出し&lt;/h1&gt;
-      &lt;p&gt;本文テキスト&lt;/p&gt;
-    &lt;/main&gt;
-    &lt;footer&gt;フッター&lt;/footer&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-  </code></pre>
-
-  <h3>2-2. よく使うタグ</h3>
-  <table>
-    <tr><th>用途</th><th>タグ</th><th>例</th></tr>
-    <tr><td>見出し</td><td><code>&lt;h1&gt;〜&lt;h6&gt;</code></td><td><code>&lt;h1&gt;タイトル&lt;/h1&gt;</code></td></tr>
-    <tr><td>段落</td><td><code>&lt;p&gt;</code></td><td><code>&lt;p&gt;本文です&lt;/p&gt;</code></td></tr>
-    <tr><td>リスト</td><td><code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code></td><td>箇条書き</td></tr>
-    <tr><td>リンク</td><td><code>&lt;a href=""&gt;</code></td><td>他ページへ</td></tr>
-    <tr><td>画像</td><td><code>&lt;img&gt;</code></td><td><code>&lt;img src="img.jpg" alt="説明"&gt;</code></td></tr>
-    <tr><td>構造</td><td><code>&lt;header&gt;&lt;main&gt;&lt;footer&gt;</code></td><td>ページ構造</td></tr>
-  </table>
-
-  <h3>2-3. よくある注意点</h3>
-  <ul>
-    <li><code>&lt;!DOCTYPE html&gt;</code>と<code>&lt;meta charset="utf-8"&gt;</code>は必須</li>
-    <li>画像には<code>alt</code>を付ける（検索・読み上げに重要）</li>
-    <li>見出しは階層順に使う（h1→h2→h3…）</li>
-    <li>スマホ対応は<code>&lt;meta name="viewport"&gt;</code>が重要</li>
-  </ul>
-
-  <h3>2-4. 参考サイト</h3>
-  <ul>
-    <li><a href="https://developer.mozilla.org/ja/" target="_blank">MDN Web Docs</a>（HTML・CSS・JS公式解説）</li>
-    <li><a href="https://validator.w3.org/" target="_blank">W3C Markup Validation Service</a>（構文チェック）</li>
-    <li><a href="https://git-scm.com/book/ja/" target="_blank">Pro Git（公式書籍）</a></li>
-  </ul>
-
-  <hr>
+    <h1>見出し</h1>
+    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
+    <div>
+         <!-- ①↓に文字を書いてみよう -->
+        Hello!!<br>
+        デザイン演習<br>
+         <!-- ②↓に画像（imagesフォルダにあるtest.png）を挿入してみよう -->
+        <img src="./images/testimage.png" width="100%"><br>
+        <img src="./images/testimage.png" width="50%"><br>
+        <img src="../images/0_XBlogo.png" width="50%"><br>
+        <img src="../images/image0.jpeg" width="20%">
+         <!-- ③↓に箇条書きをしてみよう -->
+        <ol>
+            <li>あああああ</li>
+            <li>いいいいい</li>
+        </ol>
+        <ul>
+            <li>aaaaa</li>
+            <li>iiiii</li>
+        </ul>
+         <!-- ④↓に外部リンクを作ってみよう -->
+        <a href="./index.html">デザイン演習Ⅰ・Ⅱトップページ</a><br>
+                    <a href="../index.html">XBPトップページ</a><br>
+                    <a href="https://www.yahoo.co.jp/" target="_blank">Yahoo</a><br>
+                    <a href="./files/test.pdf" target="_blank">pdfファイル</a>
+    <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/FdlXUL64Q70?si=ZyhFH8aHZF-SfD5e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
 
 </body>
 </html>
