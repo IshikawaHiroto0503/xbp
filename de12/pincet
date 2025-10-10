@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ピアス型ピンセット｜作品紹介</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f8f8;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      border-left: 5px solid #333;
+      padding-left: 0.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .image-center {
+      text-align: center;
+    }
+    .image-center img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 0.5rem;
+    }
+    ul {
+      margin-left: 1.5rem;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>作品タイトル：ピアス型ピンセット</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- スケッチ -->
+    <section>
+      <h2>構想段階の手書きスケッチ</h2>
+      <p>
+        構想段階では、単なるピンセットではなく「普段から身につけられる形」にしたいと考え、ピアスのようなリング状のデザインをスケッチしました。
+        見た目はアクセサリーとして自然でありながら、先端部分をつまむことでピンセットの機能を持たせる構造を描きました。
+      </p>
+      <div class="image-center">
+        <img src="pia2.jpeg" alt="構想段階のスケッチ画像">
+      </div>
+    </section>
+
+    <!-- 完成作品 -->
+    <section>
+      <h2>実際に作った作品</h2>
+      <p>
+        完成品は、スケッチをもとに3Dプリンターで造形したものです。
+        薄めのリング形状を活かし、片方の端を柔軟に動かせるようにして、ピンセットとして物をつまめる構造になっています。
+      </p>
+      <div class="image-center">
+        <img src="pia1.jpeg" alt="完成したピアス型ピンセットの写真">
+      </div>
+    </section>
+
+    <!-- 作品の説明 -->
+    <section>
+      <h2>作品の説明</h2>
+      <p>
+        この作品は「ピアスにもなるピンセット」です。見た目はピアスのようなシンプルなリング状で、装飾品として身につけられるデザインになっています。
+        使用時にはリングの端を指でつまむことで、ピンセットとして小さな物をつかむことができます。
+        普段はアクセサリーとして身につけ、必要なときに道具として使えるという、機能性とデザイン性を両立させた作品です。
+      </p>
+    </section>
+
+    <!-- 制作のきっかけ -->
+    <section>
+      <h2>制作のきっかけ・想い</h2>
+      <p>
+        課題のテーマが「3Dプリンターを使って面白いピンセットを作る」だったため、日常生活の中で持ち歩きやすく、かつ使う場面に応じて形を変えられるものを考えました。
+        ピンセットは通常、使わないときはしまっておく道具ですが、ピアスの形にすることで、身につけながら持ち運べるという新しい発想を形にしたいと思い、この作品のアイデアに至りました。
+      </p>
+    </section>
+
+    <!-- 制作プロセス -->
+    <section>
+      <h2>制作プロセス・調べたこと</h2>
+      <ul>
+        <li><strong>使用ソフト：</strong>Fusion 360</li>
+        <li><strong>試した機能・パラメータ：</strong>
+          <ul>
+            <li>スケッチツールで円弧と直線を組み合わせ、リング状の形状を設計</li>
+            <li>押し出し機能を使って1.5mm前後の厚みを設定</li>
+            <li>柔軟に開閉できるように、ピンセット部分の間隔や曲線の形状を何度か微調整</li>
+          </ul>
+        </li>
+        <li><strong>参考にしたリンク：</strong>
+          <ul>
+            <li><a href="https://help.autodesk.com/view/fusion360/ENU/" target="_blank">Fusion 360 公式ヘルプ</a></li>
+            <li><a href="https://make.dmm.com/" target="_blank">DMM.make 3Dプリントサービス</a></li>
+          </ul>
+        </li>
+        <li><strong>プリント設定：</strong>
+          <ul>
+            <li>素材：PLA</li>
+            <li>充填率：20%</li>
+            <li>サポート：なし</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</body>
+</html>
