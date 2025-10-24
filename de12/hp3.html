@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OKみなとみらい店 前 定点観察（30分）</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body{font-family: "Noto Sans JP", Meiryo, Arial, sans-serif; margin:0; background:#f7f9fb; color:#111}
+    header{background:#0b5f73; color:white; padding:28px 20px}
+    header h1{margin:0; font-size:28px}
+    .container{max-width:980px; margin:28px auto; padding:0 16px}
+    .card{background:white; border-radius:10px; box-shadow:0 6px 18px rgba(15,23,42,0.08); padding:18px; margin-bottom:18px}
+    .map-img{width:100%; height:auto; border-radius:8px; border:1px solid #e6eef1}
+    .meta{font-size:14px; color:#345; margin-top:8px}
+    table{width:100%; border-collapse:collapse; font-size:18px}
+    th,td{padding:12px 10px; text-align:left; border-bottom:1px solid #e6eef1}
+    th{background:#f1fbfd; font-weight:700}
+    .right{text-align:right}
+    .summary{margin-top:12px; font-size:15px; line-height:1.6}
+    footer{font-size:13px; color:#666; text-align:center; padding:18px 10px}
+    @media (max-width:520px){header h1{font-size:20px} table{font-size:16px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>OKみなとみらい店 前 定点観察（30分）</h1>
+      <div style="margin-top:6px; font-size:14px; opacity:0.95">観察場所：OKみなとみらい店前（とちのき通り交差点付近）</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 style="margin-top:0">観察用地の地図スクリーンショット</h2>
+      <img class="map-img" src="" alt="OKみなとみらい店 前 の地図スクリーンショット">
+      <div class="meta">撮影（日付/時刻をここに追記してください）・観察時間：30分（定点）</div>
+      <p class="summary">概要：店舗前の歩道と交差点付近を30分間観察しました。通行人・来店動線・鞄の種類などを記録しています。下の表は観察で得られた鞄の種類ごとの人数と割合です。</p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top:0">観察結果（集計）</h2>
+      <img class="map-img" src="/mnt/data/地図スクショ２.png" alt="観察結果の元写真（集計ボード）" style="max-width:420px; margin-bottom:12px">
+
+      <table aria-label="観察結果テーブル">
+        <thead>
+          <tr>
+            <th>鞄の種類</th>
+            <th class="right">人数</th>
+            <th class="right">割合（％）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>リュック</td><td class="right">58</td><td class="right">35.4%</td></tr>
+          <tr><td>ショルダーバッグ</td><td class="right">46</td><td class="right">28.0%</td></tr>
+          <tr><td>ビジネスバッグ</td><td class="right">4</td><td class="right">2.4%</td></tr>
+          <tr><td>ウエストポーチ</td><td class="right">12</td><td class="right">7.3%</td></tr>
+          <tr><td>トートバッグ</td><td class="right">41</td><td class="right">25.0%</td></tr>
+          <tr><td>キャリーケース</td><td class="right">3</td><td class="right">1.8%</td></tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>合計</th>
+            <th class="right">164</th>
+            <th class="right">100%</th>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div style="margin-top:30px">
+        <canvas id="bagChart"></canvas>
+      </div>
+
+      <script>
+        const ctx = document.getElementById('bagChart');
+        new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ['リュック', 'ショルダーバッグ', 'ビジネスバッグ', 'ウエストポーチ', 'トートバッグ', 'キャリーケース'],
+            datasets: [{
+              data: [58, 46, 4, 12, 41, 3],
+              backgroundColor: ['#4dc9f6', '#f67019', '#f53794', '#537bc4', '#acc236', '#166a8f']
+            }]
+          },
+          options: {
+            plugins: {
+              title: { display: true, text: '鞄の種類別割合（OKみなとみらい店前観察）' },
+              legend: { position: 'bottom' }
+            }
+          }
+        });
+      </script>
+
+      <p class="summary">補足：割合は合計164件に対する比率です。視覚的に分布を把握できるよう円グラフを追加しました。</p>
+    </section>
+
+    <section class="card">
+      <h2 style="margin-top:0">考察</h2>
+      <p class="summary">・リュック、ショルダーバッグ、トートバッグが全体の8割以上を占めており、カジュアル利用者が多い傾向です。<br>
+      ・ビジネスバッグとキャリーケースは少数で、観察時間帯や曜日によって構成が変わると考えられます。<br>
+      ・今後は時間帯別や天候別などで比較観察を行うと、より詳細な行動分析につながります。</p>
+    </section>
+  </main>
+
+  <footer>
+    このページはサンプルです。画像ファイルはサーバ内の <code>/mnt/data/</code> に置かれたスクリーンショットを参照しています。
+  </footer>
+</body>
+</html>
