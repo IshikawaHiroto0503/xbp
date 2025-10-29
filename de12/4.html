@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Pythonゲーム紹介：あっち向いてホイ</title>
+  <style>
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 1.5em 0;
+    }
+    main {
+      max-width: 800px;
+      margin: 2em auto;
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+      border-left: 6px solid #4CAF50;
+      padding-left: 10px;
+    }
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1em;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.95em;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2em;
+      color: #777;
+      padding-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pythonゲーム紹介：「あっち向いてホイ」</h1>
+  </header>
+
+  <main>
+    <h2>🎮ゲームの概要</h2>
+    <p>
+      このゲームは、Pythonを使って作成した「あっち向いてホイ」です。<br>
+      変数・条件分岐（if文）・キーボード入力（input）・乱数（random）などの基本機能を組み合わせて構築しました。<br>
+      プレイヤーは「上・下・左・右」のいずれかを入力し、コンピュータの出した方向と一致したら負けとなります。
+    </p>
+
+    <h2>🧠使ったスキル</h2>
+    <ul>
+      <li>変数の定義と使用</li>
+      <li>条件分岐による判定処理</li>
+      <li>キーボード入力によるユーザー操作</li>
+      <li>乱数によるコンピュータの動作決定</li>
+    </ul>
+
+    <h2>💻ゲームのソースコード</h2>
+    <pre>
+import random
+
+print("あっち向いてホイ ゲーム！")
+print("上(u)、下(d)、左(l)、右(r)のどれかを入力してね！")
+
+directions = ["u", "d", "l", "r"]
+
+while True:
+    user = input("あなたの向き（u/d/l/r）→ ")
+    if user not in directions:
+        print("正しく入力してください（u, d, l, r）")
+        continue
+
+    comp = random.choice(directions)
+    print("コンピュータの向き：", comp)
+
+    if user == comp:
+        print("あっち向いてホイ！負け！")
+        break
+    else:
+        print("セーフ！もう一回！")
+    </pre>
+
+    <h2>✨まとめ</h2>
+    <p>
+      Pythonの基本構文を使って、簡単ながらも対戦感のあるゲームを作ることができました。<br>
+      コンピュータの乱数処理を利用することで、毎回違う結果になる面白さがあります。<br>
+      ぜひ皆さんも遊んでみてください。
+    </p>
+  </main>
+
+</body>
+</html>
