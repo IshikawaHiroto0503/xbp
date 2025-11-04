@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>紋の交響 — 作品紹介</title>
+  <style>
+    body{font-family: "Yu Gothic UI", Meiryo, system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; color:#222; background:#faf9f6; margin:0; padding:24px}
+    .container{max-width:900px;margin:0 auto;background:#fff;border-radius:12px;padding:24px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+    h1{font-size:28px;margin:0 0 8px}
+    .meta{color:#666;margin-bottom:18px}
+    .images{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+    .images img{width:280px;height:auto;border-radius:8px;border:1px solid #eee;box-shadow:0 4px 12px rgba(0,0,0,0.04)}
+    section{margin-bottom:18px}
+    h2{font-size:18px;margin:0 0 10px}
+    p{line-height:1.8;margin:0}
+    pre{background:#f6f6f6;padding:12px;border-radius:8px;overflow:auto}
+    ul{margin:0 0 0 18px}
+    .note{font-size:13px;color:#555}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>紋の交響</h1>
+    <div class="meta">作品のタイトル: <strong>紋の交響</strong>　｜　設計ファイル: <code>kosuta</code></div>
+
+    <div class="images">
+      <figure>
+        <img src="wagara.jpeg" alt="和柄：青海波（表）">
+        <figcaption class="note">表：和柄（青海波）</figcaption>
+      </figure>
+      <figure>
+        <img src="yougara.jpeg" alt="洋柄：ヘリンボーン（裏）">
+        <figcaption class="note">裏：洋柄（ヘリンボーン）</figcaption>
+      </figure>
+    </div>
+
+    <section>
+      <h2>作品説明</h2>
+      <p>
+        「紋の交響」は、日本の伝統文様と西洋の幾何学的テクスチャを一つの小さな円に重ね合わせることで、文化の対話と視覚の調和を表現した作品です。表面には穏やかな波を繰り返す青海波を配し、裏面には規則的でリズミカルなヘリンボーンを配しました。素材の手触りや切断面の微かな陰影が、柄の織りなすリズムに寄り添い、見る人の呼吸をゆっくりと整えることを意図しています。なぜ心が動くのか…それは、目に見えるパターンが持つ反復性と変化の微妙なバランスが、無意識に「秩序」と「予想外」を同時に刺激するからだと考えています。日常の中でふと手に取り、指でなぞったときに生まれる触覚と視覚の交差点に、記憶や情緒が静かに呼び起こされる。そうした小さな瞬間を大切にするためにこの作品をつくりました。
+      </p>
+    </section>
+
+    <section>
+      <h2>制作プロセス（メモ・調査・試行したこと）</h2>
+      <ul>
+        <li>設計ファイル: <code>kosuta</code></li>
+        <li>使用ソフトの機能メモ: ベジェ曲線によるパス編集、パターンのタイル化（オブジェクトを配列して繰り返し配置）、パスのブール演算で不要な重なりを削除。グリッドを使ってヘリンボーンの角度と間隔を正確に調整。</li>
+        
+        <li>試したパラメータ:
+          <ul>
+            <li>線幅（ストローク）: 0.3mm〜1.0mmで視認性と切断のしやすさを比較。</li>
+            <li>パターン間隔: 青海波の波高を数値で調整（10〜20mm帯）してバランスを検証。</li>
+            <li>マテリアルの厚み: 2mm〜6mm程度で触感と影の出方を比較。</li>
+            <li>ケルフ補正の確認: レーザー／CNCで実際に切る際の幅を想定してパスをオフセットし、実寸との誤差を最小化。</li>
+          </ul>
+        </li>
+        <li>参考手順:
+          <ol>
+            <li>パターンをベクターデータで作成し、タイル化して意図した領域にマスク。</li>
+            <li>パスを結合・切り抜きして切断用の最終パスを作成。</li>
+            <li>SVGをエクスポート。レーザーやCNC用のソフトで読み込み、パラメータ（出力順・出力速度・出力パワー）を設定。</li>
+            <li>試作として小さな切り出しを行い、微調整後に本番カット。</li>
+          </ol>
+        </li>
+        <li>参考にした情報源（調査メモ）: ベクターパターンの作り方、ケルフ補正、素材（合板・MDF・厚紙）の切断特性に関する記事やチュートリアルを参照して設計に反映。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>ファイルと使い方</h2>
+      <p class="note">このHTMLと同じフォルダに以下の画像ファイル（<code>wagara.jpeg</code>、<code>yougara.jpeg</code>）および設計ファイル <code>kosuta</code>（SVG/PDF等）を置いてください。ブラウザでこのHTMLを開くことでプレビューできます。</p>
+
+      <pre>&lt;!-- 画像ファイル名（同一フォルダ） --&gt;
+wagara.jpeg
+yougara.jpeg
+
+&lt;!-- 設計ファイル --&gt;
+kosuta.svg  または  kosuta.pdf
+</pre>
+    </section>
+
+    <footer class="note">編集やレイアウト調整、別サイズの画像差し替えが必要なら教えてください。</footer>
+  </div>
+</body>
+</html>
