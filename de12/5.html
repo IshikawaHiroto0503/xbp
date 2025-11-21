@@ -1,39 +1,151 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-    <!-- ⑥↓タイトルを変えてみよう -->
-    <title>ひろっとのテストページ</title>
-    <!-- ⑤スタイルシートの設定をしよう -->
-     <link rel="stylesheet" href="./css/style.css">
-    <!-- h1.htmlからある行をコピペしてくればOK -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天気予報アプリ（Python × OpenWeatherMap API）</title>
+<style>
+body {
+  font-family: "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: linear-gradient(to right, #a8c0ff, #3f2b96);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+header {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(0,0,0,0.3);
+}
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+pre {
+  background: rgba(0,0,0,0.5);
+  padding: 15px;
+  border-radius: 10px;
+  overflow-x: auto;
+  color: #d0f0ff;
+  font-size: 14px;
+}
+h2 {
+  border-left: 6px solid #ffda79;
+  padding-left: 10px;
+  margin-top: 40px;
+}
+.example {
+  background: rgba(255,255,255,0.15);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+</style>
 </head>
 <body>
-    <h1>見出し</h1>
-    <!-- 塊ごとにdivタグで区切るようにしましょう。 -->
-    <div>
-         <!-- ①↓に文字を書いてみよう -->
-        Hello!!<br>
-        デザイン演習<br>
-         <!-- ②↓に画像（imagesフォルダにあるtest.png）を挿入してみよう -->
-        <img src="./images/testimage.png" width="100%"><br>
-        <img src="./images/testimage.png" width="50%"><br>
-        <img src="../images/0_XBlogo.png" width="50%"><br>
-        <img src="../images/image0.jpeg" width="20%">
-         <!-- ③↓に箇条書きをしてみよう -->
-        <ol>
-            <li>あああああ</li>
-            <li>いいいいい</li>
-        </ol>
-        <ul>
-            <li>aaaaa</li>
-            <li>iiiii</li>
-        </ul>
-         <!-- ④↓に外部リンクを作ってみよう -->
-        <a href="./index.html">デザイン演習Ⅰ・Ⅱトップページ</a><br>
-                    <a href="../index.html">XBPトップページ</a><br>
-                    <a href="https://www.yahoo.co.jp/" target="_blank">Yahoo</a><br>
-                    <a href="./files/test.pdf" target="_blank">pdfファイル</a>
-    <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/FdlXUL64Q70?si=ZyhFH8aHZF-SfD5e" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  <header>
+    <h1>🌤 天気予報アプリ（Python × OpenWeatherMap API）</h1>
+    <p>Pythonで天気情報を取得して表示するシンプルなアプリ</p>
+  </header>
 
+  <div class="container">
+    <h2>🔍 OpenWeatherMap APIとは？</h2>
+    <p>
+      OpenWeatherMapは、世界中の気象データを提供する無料・有料のAPIサービスです。
+      PythonなどのプログラムからHTTPリクエストを送ることで、都市名を指定して天気・気温・湿度などを取得できます。
+    </p>
+
+    <h2>💻 Pythonコード（<code>weather_app.py</code>）</h2>
+    <pre>
+# weather_app.py
+# 天気予報アプリ（Python × OpenWeatherMap API）
+
+import requests
+
+# OpenWeatherMapのAPIキー
+API_KEY = "01ef43d13636c34d26bb6946c9e18390"
+
+BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+
+def get_weather(city_name):
+    """指定した都市の天気情報を取得して表示"""
+    params = {
+        "q": city_name,
+        "appid": API_KEY,
+        "lang": "ja",       # 日本語で出力
+        "units": "metric"   # 摂氏（℃）で表示
+    }
+
+    response = requests.get(BASE_URL, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        weather = data["weather"][0]["description"]
+        temp = data["main"]["temp"]
+
+        print(f"\\n🌤 {city_name}の現在の天気情報")
+        print("------------------------------")
+        print(f"天気：{weather}")
+        print(f"気温：{temp}℃")
+        print("------------------------------\\n")
+    else:
+        print("❌ 都市名が見つかりませんでした。")
+
+if __name__ == "__main__":
+    print("=== 天気予報アプリ (OpenWeatherMap API) ===")
+    city = input("都市名を入力してください: ")
+    get_weather(city)
+    </pre>
+
+    <h2>🌦 実行例（いわき市の場合）</h2>
+    <div class="example">
+      <p><strong>入力:</strong> いわき</p>
+      <pre>
+=== 天気予報アプリ (OpenWeatherMap API) ===
+都市名を入力してください: いわき
+
+🌤 いわきの現在の天気情報
+------------------------------
+天気：くもり
+気温：17.5℃
+------------------------------
+      </pre>
+      <p>※ 上記は実際の天気データに基づく一例です（リアルタイムで変動します）。</p>
+    </div>
+
+    <h2>⚙️ 動作の仕組み</h2>
+    <ul>
+      <li>① Pythonで<code>requests</code>ライブラリを使用し、OpenWeatherMap APIにアクセス。</li>
+      <li>② 都市名（例：いわき）を指定して、現在の天気データをJSON形式で取得。</li>
+      <li>③ 天気と気温を日本語で出力。</li>
+    </ul>
+
+    <h2>📝 まとめ</h2>
+    <p>
+      この天気予報アプリは、APIを通じてリアルタイムな情報を取得する基本的な仕組みを理解できる良い例です。
+      わずか数行のコードで、世界中の都市の天気を簡単に確認できます。
+      今後は、湿度・風速・天気アイコンの表示や、ブラウザ上で動作するWebアプリへの発展など、
+      さらに機能を拡張することも可能です。<br><br>
+      APIの利用を通して、「データを取得し、活用する」プログラミングの力を体験できる点がこのアプリの魅力です。
+    </p>
+  </div>
+
+  <footer>
+    © 2025 天気予報アプリ by Python × OpenWeatherMap API
+  </footer>
 </body>
 </html>
