@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ハニカムスタンド — 完成作品紹介</title>
+  <style>
+    :root{
+      --bg: #f0f7ff;
+      --card: #ffffff;
+      --muted: #4b5563;
+      --accent: #2563eb;
+      --accent-light:#dbeafe;
+      --accent-grad: linear-gradient(135deg,#60a5fa,#2563eb);
+    }
+    body{
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color:#111;
+      margin:0;
+      padding:24px;
+    }
+    .container{max-width:900px;margin:0 auto}
+    header{display:flex;align-items:baseline;gap:16px;background:var(--accent-grad);padding:20px;border-radius:14px;color:white;margin-bottom:18px}
+    h1{font-size:1.8rem;margin:0}
+    p.lead{margin:8px 0 20px;color:#e0e7ff}
+    .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:18px}
+    .photo{background:var(--card);padding:12px;border-radius:14px;box-shadow:0 6px 20px rgba(12,15,22,0.1);display:flex;align-items:center;justify-content:center;border:2px solid var(--accent-light)}
+    .photo img{max-width:100%;height:auto;border-radius:10px}
+    figcaption{font-size:0.9rem;color:var(--muted);margin-top:6px;text-align:center}
+    .card{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 6px 20px rgba(12,15,22,0.06);margin-bottom:16px;border-left:6px solid var(--accent)}
+    h2{margin:0 0 10px;font-size:1.3rem;color:var(--accent)}
+    ul{margin:8px 0 12px 20px}
+    .meta{font-size:0.9rem;color:var(--muted)}
+    .flex{display:flex;gap:12px;flex-wrap:wrap;margin-left:auto}
+    .pill{background:var(--accent-light);color:var(--accent);padding:6px 12px;border-radius:999px;font-weight:600}
+    footer{font-size:0.85rem;color:var(--muted);text-align:center;margin-top:22px}
+    @media (max-width:700px){.gallery{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>ハニカムスタンド</h1>
+        <p class="lead">レーザーカッターで切り出したアクリル製のハニカム模様のスタンド。視覚的に落ち着く六角パターンを取り入れ、シンプルさと実用性を両立させました。</p>
+      </div>
+      <div style="margin-left:auto" class="flex">
+        <span class="pill">素材：アクリル</span>
+        <span class="pill">加工：レーザーカット</span>
+      </div>
+    </header>
+
+    <section class="gallery" aria-label="作品写真">
+      <figure class="photo">
+        <img src="honey1.jpeg" alt="ハニカムスタンド 正面写真">
+        <figcaption>写真1：立たせた正面像</figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="honey2.jpeg" alt="ハニカムスタンド ディテール写真">
+        <figcaption>写真2：ディテール写真</figcaption>
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>作品説明</h2>
+      <p>ハニカムスタンドは、六角形を規則的に並べたハニカム模様を表面に施したアクリル板を用い、シンプルな台座に差し込むことで自立させる構造です。視覚的な反復と均衡がもたらす安堵感をデザインコンセプトにしています。卓上オブジェクトとしてだけでなく、小物トレイやフォトスタンドの背景としても使えます。</p>
+    </section>
+
+    <section class="card">
+      <h2>制作で工夫した所</h2>
+      <ul>
+        <li>ハニカムパターンのライン幅を細くしすぎないことで、カットの成功率を上げつつ透け感を確保しました。</li>
+        <li>六角形の配置は規則性を保ちつつ、端部での不完全セルをあえて残すことで手作り感を加えました。</li>
+        <li>スタンドの嵌合部は摩耗を見越して0.1〜0.2mmのクリアランスを設け、接合のきつさを調整しました。</li>
+        <li>アクリルの一面にサンドブラスト処理を行い、光の拡散をやわらげて視覚的な柔らかさを出しました。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>反省点</h2>
+      <ul>
+        <li>端部のバリ取り（切削後の焦げやススの除去）をもっと丁寧に行う必要がありました。写真の角にわずかなススが残っています。</li>
+        <li>嵌合部のクリアランスは普段使いではちょうど良いものの、複数回の着脱で緩くなる懸念があります。次回は差し込み方の形状を工夫してロック性を高めます。</li>
+        <li>レーザー出力やスピードの記録を毎回細かく残しておらず、同じ仕上がりを再現しづらかったです。今後は材料ごとに設定ログを残します。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>素材・加工メモ</h2>
+      <p class="meta">※以下は使用した条件の一例です。レーザー機種やアクリルの厚みで適切な設定は異なります。</p>
+      <ul>
+        <li>素材：キャストアクリル 透明 3mm</li>
+        <li>レーザー設定：出力 80%、速度 20mm/s</li>
+        <li>仕上げ：サンドブラストで片面をマット化、エッジはバリ取りと軽い研磨</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>使い方アイデア</h2>
+      <ul>
+        <li>デスクのアクセントとして単体でディスプレイ</li>
+        <li>背後にLEDを置いて光を透過させ、模様を演出</li>
+        <li>写真やカードの背景に立ててフォトスタンドとして使用</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
