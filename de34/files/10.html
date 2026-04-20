@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Arduinoを触ってみて</title>
+<style>
+    body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(to right, #e0f7fa, #fce4ec);
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #00796b;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    .section {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+        color: #00796b;
+        border-bottom: 2px solid #b2dfdb;
+        padding-bottom: 5px;
+    }
+
+    .images {
+        display: flex;
+        gap: 20px;
+        margin-top: 15px;
+    }
+
+    .images img {
+        width: 250px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    ul {
+        line-height: 1.8;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background-color: #00796b;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Arduinoを触ってみて</h1>
+</header>
+
+<div class="container">
+
+    <div class="section">
+        <h2>使用機器</h2>
+        <ul>
+            <li>UNO R3</li>
+            <li>LED</li>
+            <li>抵抗</li>
+            <li>ブレッドボード</li>
+            <li>ジャンパー線</li>
+        </ul>
+
+        <div class="images">
+            <img src="UNOR3.jpeg" alt="Arduino UNO R3">
+            <img src="LED.jpeg" alt="LED">
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Lチカ（LED点滅）</h2>
+        <p>
+            Arduinoの基本として、LEDを一定間隔で点滅させる「Lチカ」に挑戦しました。
+            プログラムでHIGHとLOWを切り替えることで、LEDがチカチカと光る仕組みを学びました。
+            シンプルな動作ですが、プログラミングと電子回路が連動していることを実感できました。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>暗いときに光るLED</h2>
+        <p>
+            次に、周囲が暗くなったときにLEDが自動で光るプログラムを作成しました。
+            センサーからの値を読み取り、その値に応じてLEDのON/OFFを制御しました。
+            条件分岐を使うことで、より実用的なプログラムが作れることを学びました。
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>感想</h2>
+        <p>
+            Arduinoを実際に触ることで、プログラミングと電子工作の面白さを体験できました。
+            自分の書いたコードによってLEDが動くのはとても楽しく、達成感がありました。
+            今後はセンサーやモーターなども使って、さらに発展的な作品を作ってみたいです。
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    © Arduino体験レポート
+</footer>
+
+</body>
+</html>
