@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>たたき起こし</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to bottom, #4facfe, #ffffff);
+    color: #333;
+  }
+
+  header {
+    background: #ff6f61;
+    color: white;
+    text-align: center;
+    padding: 30px;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 36px;
+  }
+
+  header p {
+    margin-top: 10px;
+  }
+
+  section {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+
+  h2 {
+    border-left: 6px solid #ff6f61;
+    padding-left: 10px;
+    color: #ff6f61;
+  }
+
+  ul {
+    line-height: 1.8;
+  }
+
+  iframe {
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+  }
+
+  pre {
+    background: #1e1e1e;
+    color: #00ffcc;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+  }
+
+  footer {
+    text-align: center;
+    padding: 15px;
+    background: #eee;
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>たたき起こし</h1>
+  <p>朝、明るくなると自動で起こしてくれる装置</p>
+</header>
+
+<section>
+  <h2>作品の概要</h2>
+  <p>
+    この作品は、朝になり明るくなったタイミングでモーターが動き、
+    お母さんがたたき起こしてくれるような動作を再現した装置です。
+    光センサーを利用し、一定以上の明るさになるとモーターが作動する仕組みになっています。
+  </p>
+</section>
+
+<section>
+  <h2>工夫した点</h2>
+  <ul>
+    <li>モーターの位置と子供の位置を調整し、しっかり起こせるようにした</li>
+    <li>明るさのしきい値を設定し、朝だけ動くようにした</li>
+    <li>暗いときにはモーターが完全に停止するようにプログラムを改良した</li>
+  </ul>
+</section>
+
+<section>
+  <h2>動作動画</h2>
+
+  <iframe width="703" height="613"
+    src="https://www.youtube.com/embed/BVRgQ718PGk"
+    title="モーター"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
+</section>
+
+<section>
+  <h2>Arduinoコード</h2>
+
+<pre>
+const int sensorPin = A0;
+int threshold = 500;
+
+const int DIR  = 8;
+const int STEP = 9;
+
+void setup() {
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, LOW);
+
+  Serial.begin(9600);
+}
+
+void loop() {
+
+  int val = analogRead(sensorPin);
+  Serial.println(val);
+
+  // ⭐ 明るいときだけ1ステップずつ動かす
+  if (val >= 750) {
+
+    // 時計回り
+    digitalWrite(DIR, HIGH);
+    stepMotor(5000);
+
+  } else {
+    // ⭐ 完全停止
+    stopMotor();
+  }
+}
+
+// 1ステップだけ動かす
+void stepMotor(int delaytime) {
+  digitalWrite(STEP, HIGH);
+  delayMicroseconds(delaytime);
+  digitalWrite(STEP, LOW);
+  delayMicroseconds(delaytime);
+}
+
+// 完全停止
+void stopMotor() {
+  digitalWrite(STEP, LOW);
+}
+</pre>
+
+</section>
+
+<section>
+  <h2>まとめ</h2>
+  <p>
+    光センサーとモーターを組み合わせることで、
+    明るさに応じて動作する装置を作ることができました。
+    実際の生活にも応用できる仕組みであり、
+    センサー制御の仕組みについて理解を深めることができました。
+  </p>
+</section>
+
+<footer>
+  <p>Arduino作品ページ</p>
+</footer>
+
+</body>
+</html>
