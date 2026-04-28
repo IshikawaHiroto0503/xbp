@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Flaskについて</title>
+
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background: linear-gradient(120deg, #89f7fe, #66a6ff);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            margin: 30px auto;
+            padding: 20px;
+            width: 80%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #66a6ff;
+            padding-bottom: 5px;
+        }
+
+        p {
+            line-height: 1.8;
+        }
+
+        .data-box {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            color: #ff6600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Flaskについて</h1>
+</header>
+
+<div class="container">
+
+    <h2>Flaskとは？</h2>
+    <p>
+        FlaskはPythonでWebアプリケーションを作ることができる軽量なフレームワークです。
+        シンプルな構造で初心者でも扱いやすく、自分で自由に機能を追加できるのが特徴です。
+    </p>
+
+    <h2>今回作ったプログラム</h2>
+    <p>
+        CSVファイルを読み込み、そのデータをWebページに表示するプログラムを作成しました。
+        特に、場所のデータをGoogleマップのリンクに変換する工夫をしました。
+    </p>
+
+    <h2>工夫した点</h2>
+    <ul>
+        <li>CSVのデータをリストとして取得</li>
+        <li>位置情報をGoogleマップURLに変換</li>
+        <li>条件分岐で表示方法を変更</li>
+    </ul>
+
+    <h2>データ表示</h2>
+
+    <div class="data-box">
+        {% for data in mmlist %}
+            {% if data[1] == "場所" %}
+                <strong>{{ data[1] }}</strong><br>
+            {% elif data|length > 3 and data[3] %}
+                <a href="{{ data[3] }}" target="_blank">{{ data[1] }}</a><br>
+            {% else %}
+                {{ data[1] }}<br>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <h2>まとめ</h2>
+    <p>
+        Flaskを使うことで、Pythonのデータ処理とWebページを簡単に連携させることができました。
+        今後はデザインの向上や、データベースとの連携などにも挑戦していきたいです。
+    </p>
+
+</div>
+
+
+</body>
+</html>
