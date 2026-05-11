@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>BizTech Portal アプリ制作レポート</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #fce4ec);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: #1976d2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1976d2;
+            border-left: 6px solid #1976d2;
+            padding-left: 10px;
+        }
+
+        pre {
+            background: #263238;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background: white;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #28a745;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .thanks {
+            margin-top: 30px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #1976d2;
+            color: white;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>KU-BizTech Portal アプリ制作</h1>
+    <p>横浜市 すかいらーくグループ時給比較アプリ</p>
+</header>
+
+<div class="container">
+
+    <h2>① BizTech Portalとは</h2>
+    <p>
+        BizTech Portalとは、ビジネスとテクノロジーを組み合わせた学習を行うための環境であり、
+        実際にアプリケーションを作成しながらプログラミングやデータ活用を学ぶことができる。
+        特にPythonやFlaskなどを用いて、実用的なWebアプリを作る経験ができる点が特徴である。
+    </p>
+
+    <h2>② 作成したアプリの概要</h2>
+    <p>
+        横浜市内にあるすかいらーくグループのアルバイト時給を比較し、
+        時給の高い順にランキング表示するアプリを作成した。
+        利用者が一目でどの店舗が高時給か分かるように工夫した。
+    </p>
+
+    <h2>③ Python（Flask）コード</h2>
+    <pre>
+from flask import Flask, render_template
+import os
+
+app = Flask(__name__)
+
+jobs = [
+    {"name": "ガスト", "wage": 1150},
+    {"name": "バーミヤン", "wage": 1150},
+    {"name": "ジョナサン", "wage": 1200},
+    {"name": "夢庵", "wage": 1150},
+    {"name": "ステーキガスト", "wage": 1180},
+    {"name": "しゃぶ葉", "wage": 1200},
+    {"name": "から好し", "wage": 1180},
+    {"name": "むさしの森珈琲", "wage": 1250}
+]
+
+@app.route("/")
+def index():
+    sorted_jobs = sorted(jobs, key=lambda x: x["wage"], reverse=True)
+    return render_template("index.html", jobs=sorted_jobs)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 3000))
+    app.run(host="0.0.0.0", port=port)
+    </pre>
+
+    <h2>④ 実行画面（イメージ）</h2>
+
+    <table>
+        <tr>
+            <th>順位</th>
+            <th>店舗</th>
+            <th>時給（円）</th>
+        </tr>
+        <tr><td>1</td><td>むさしの森珈琲</td><td>1250</td></tr>
+        <tr><td>2</td><td>ジョナサン</td><td>1200</td></tr>
+        <tr><td>3</td><td>しゃぶ葉</td><td>1200</td></tr>
+        <tr><td>4</td><td>ステーキガスト</td><td>1180</td></tr>
+        <tr><td>5</td><td>から好し</td><td>1180</td></tr>
+    </table>
+
+    <h2>⑤ 工夫した点</h2>
+    <p>
+        時給を自動で並び替える処理をPythonで実装し、常に高い順で表示されるようにした。
+        また、HTMLとCSSを使って見やすいデザインにし、順位が分かりやすいように表形式で表示した。
+    </p>
+
+    <div class="thanks">
+        <h2>⑥ 感謝の言葉</h2>
+        <p>
+            今回のBizTech Portalを通して、実際に自分でWebアプリを作成するという貴重な経験をすることができました。
+            これまでプログラミングは難しいという印象がありましたが、道用先生の丁寧な説明やサポートのおかげで、
+            基礎から理解しながら進めることができました。また、自分のアイデアを形にする楽しさや、
+            完成したときの達成感も感じることができました。
+            このような学びの機会を提供していただき、本当にありがとうございました。
+        </p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 BizTech Portal 学習成果
+</footer>
+
+</body>
+</html>
