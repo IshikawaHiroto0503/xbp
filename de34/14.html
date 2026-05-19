@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>データベース基礎まとめ</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(to right, #e3f2fd, #e8f5e9);
+        }
+
+        header {
+            background: #1565c0;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            background: white;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #1565c0;
+            border-left: 6px solid #42a5f5;
+            padding-left: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #42a5f5;
+            color: white;
+        }
+
+        code {
+            background: #f1f1f1;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #1565c0;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>データベース基礎まとめ</h1>
+    <p>テーブル・フィールド・SQLなどの基本をわかりやすく解説</p>
+</header>
+
+<section>
+    <h2>データベースとは</h2>
+    <p>
+        データベースとは、データを整理して保存し、必要なときに取り出せる仕組みです。
+        例えば、学校の成績やお店の顧客情報などに使われます。
+    </p>
+</section>
+
+<section>
+    <h2>テーブル・カラム・フィールド</h2>
+    <p>
+        データベースは「テーブル」という表の形でデータを管理します。
+    </p>
+
+    <ul>
+        <li><strong>テーブル：</strong> データのまとまり（例：学生一覧）</li>
+        <li><strong>カラム（列）：</strong> 項目（例：名前、年齢）</li>
+        <li><strong>フィールド：</strong> 1つ1つのデータ</li>
+    </ul>
+
+    <h3>例：学生テーブル</h3>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>年齢</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>田中</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>佐藤</td>
+            <td>21</td>
+        </tr>
+    </table>
+
+</section>
+
+<section>
+    <h2>SQLとは</h2>
+    <p>
+        SQL（Structured Query Language）は、データベースを操作するための言語です。
+    </p>
+
+    <h3>例：データを取得する</h3>
+    <code>
+        SELECT * FROM 学生;
+    </code>
+
+    <p>→ 学生テーブルのすべてのデータを取得する</p>
+
+    <h3>条件付き取得</h3>
+    <code>
+        SELECT * FROM 学生 WHERE 年齢 = 20;
+    </code>
+
+    <p>→ 年齢が20歳のデータだけ取得</p>
+</section>
+
+<section>
+    <h2>クエリとは</h2>
+    <p>
+        クエリとは、データベースに対する「問い合わせ」のことです。
+        SQL文を使ってデータを検索・追加・更新・削除します。
+    </p>
+</section>
+
+<section>
+    <h2>トランザクションとは</h2>
+    <p>
+        トランザクションとは、一連の処理を「まとめて安全に実行する仕組み」です。
+    </p>
+
+    <ul>
+        <li>途中で失敗したら元に戻す（ロールバック）</li>
+        <li>成功したら確定する（コミット）</li>
+    </ul>
+
+    <h3>例</h3>
+    <p>
+        銀行の振込処理では、
+        「引き出し」と「入金」をセットで成功させる必要があります。
+    </p>
+</section>
+
+<section>
+    <h2>まとめ</h2>
+    <ul>
+        <li>データはテーブルで管理する</li>
+        <li>カラムは項目、フィールドはデータ</li>
+        <li>SQLでデータを操作する</li>
+        <li>クエリは問い合わせ</li>
+        <li>トランザクションで安全に処理する</li>
+    </ul>
+</section>
+
+<footer>
+    <p>データベース学習ページ</p>
+</footer>
+
+</body>
+</html>
