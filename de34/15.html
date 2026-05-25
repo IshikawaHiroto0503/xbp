@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>商品価格比較アプリ</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #e1f5fe);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background: #2196f3;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            margin: 30px auto;
+            width: 80%;
+            max-width: 900px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 60%;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            background: #4caf50;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #388e3c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: #1976d2;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .cheapest {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        iframe {
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    🛒 商品価格比較アプリ
+</header>
+
+<div class="container">
+
+    <h2>商品を検索</h2>
+
+    <form method="POST">
+        <input type="text" name="keyword" placeholder="商品名を入力" value="{{ keyword }}">
+        <button type="submit">検索</button>
+    </form>
+
+    {% if results %}
+        <h2>検索結果</h2>
+
+        <table>
+            <tr>
+                <th>商品名</th>
+                <th>スーパー</th>
+                <th>価格</th>
+            </tr>
+
+            {% for r in results %}
+            <tr>
+                <td>{{ r[0] }}</td>
+                <td>{{ r[1] }}</td>
+                <td>{{ r[2] }} 円</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <div class="cheapest">
+            最安値：{{ results[0][2] }} 円 🎉
+        </div>
+    {% endif %}
+
+    <h2>📺 アプリ紹介動画</h2>
+
+    <iframe width="441" height="784"
+        src="https://www.youtube.com/embed/59p-ROfKuCI"
+        title="商品価格比較"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+
+</div>
+
+</body>
+</html>
