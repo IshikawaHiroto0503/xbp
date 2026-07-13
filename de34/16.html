@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💧 Water Reminder</title>
+
+<style>
+body{
+    margin:0;
+    background:#dff5ff;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    width:90%;
+    max-width:600px;
+    margin:40px auto;
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+h1{
+    color:#0099cc;
+}
+
+.count{
+    font-size:50px;
+    color:#0077aa;
+    margin:20px;
+}
+
+.timer{
+    font-size:28px;
+    color:#ff6600;
+    margin-bottom:20px;
+}
+
+button{
+    width:260px;
+    height:70px;
+    font-size:28px;
+    border:none;
+    border-radius:15px;
+    background:#00bcd4;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0097a7;
+}
+
+#message{
+    margin-top:20px;
+    font-size:22px;
+    color:red;
+    font-weight:bold;
+}
+
+.history{
+    margin-top:30px;
+    text-align:left;
+}
+
+li{
+    margin:8px;
+    font-size:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>💧 Water Reminder</h1>
+
+<h2>今日飲んだ回数</h2>
+
+<div class="count" id="count">0回</div>
+
+<div class="timer">
+次の水分補給まで<br>
+<span id="timer">60:00</span>
+</div>
+
+<button onclick="drink()">💧 飲んだ！</button>
+
+<div id="message"></div>
+
+<div class="history">
+<h2>今日の履歴</h2>
+
+<ul id="history"></ul>
+
+</div>
+
+</div>
+
+<script>
+
+let count = Number(localStorage.getItem("count")) || 0;
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+document.getElementById("count").innerHTML = count + "回";
+
+history.forEach(addHistory);
+
+let remaining = Number(localStorage.getItem("remaining")) || 3600;
+
+function drink(){
+
+    count++;
+
+    localStorage.setItem("count",count);
+
+    document.getElementById("count").innerHTML = count + "回";
+
+    let now = new Date();
+
+    let time =
+        String(now.getHours()).padStart(2,"0")+":"+
+        String(now.getMinutes()).padStart(2,"0")+":"+
+        String(now.getSeconds()).padStart(2,"0");
+
+    history.unshift(time);
+
+    localStorage.setItem("history",JSON.stringify(history));
+
+    addHistory(time,true);
+
+    remaining=3600;
+
+    document.getElementById("message").innerHTML="✅ 水分補給を記録しました！";
+}
+
+function addHistory(time,newItem=false){
+
+    let li=document.createElement("li");
+
+    li.innerHTML="💧 "+time;
+
+    let ul=document.getElementById("history");
+
+    if(newItem)
+        ul.prepend(li);
+    else
+        ul.appendChild(li);
+}
+
+setInterval(function(){
+
+    remaining--;
+
+    if(remaining<0) remaining=0;
+
+    localStorage.setItem("remaining",remaining);
+
+    let min=Math.floor(remaining/60);
+
+    let sec=remaining%60;
+
+    document.getElementById("timer").innerHTML=
+        String(min).padStart(2,"0")+":"+
+        String(sec).padStart(2,"0");
+
+    if(remaining==0){
+
+        document.getElementById("message").innerHTML=
+        "🚨 水分補給の時間です！";
+
+    }
+
+},1000);
+
+</script>
+
+</body>
+</html>
